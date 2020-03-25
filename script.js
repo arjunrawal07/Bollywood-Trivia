@@ -1,7 +1,9 @@
 let buttonPlay = document.querySelector(".play");
 let q1 = document.querySelector(".question1");
 let options = document.querySelectorAll("[type = 'radio']");
+let optionName = document.querySelectorAll("label");
 let form = document.querySelector("form");
+let score = document.querySelector(".score");
 let trivia = [
   {
     question: "What was Hrithik Roshan's first film?",
@@ -81,7 +83,9 @@ let trivia = [
     Solution: "Deepika Padukone"
   }
 ];
-
+function updateScore() {
+  score.textContent += 1;
+}
 function playGame(e) {
   e.preventDefault();
   buttonPlay.style.opacity = "0.0";
@@ -89,25 +93,42 @@ function playGame(e) {
   q1.style.opacity = "1.0";
   q1.textContent = trivia[0].question;
   options[0].value = trivia[0].A;
+  optionName[0].textContent = trivia[0].A;
   options[1].value = trivia[0].B;
+  optionName[1].textContent = trivia[0].B;
   options[2].value = trivia[0].C;
+  optionName[2].textContent = trivia[0].C;
 }
 
 function validateAnswer(e) {
-  console.log(options[0].value, options[1].value, options[2].value);
   e.preventDefault();
-  if (options[0].checked && options[0].value !== trivia[0].Solution) {
+  if (options[0].checked == true && options[0].value !== trivia[0].Solution) {
     console.log("That's wrong!");
-  } else if (options[0].checked && options[0].value === trivia[0].Solution) {
-    cosole.log("That's correct!");
-  } else if (options[1].checked && options[1].value !== trivia[0].Solution) {
+  } else if (
+    options[0].checked == true &&
+    options[0].value === trivia[0].Solution
+  ) {
+    updateScore();
+  } else if (
+    options[1].checked == true &&
+    options[1].value !== trivia[0].Solution
+  ) {
     console.log("That's wrong!");
-  } else if (options[1].checked && options[1].value === trivia[0].Solution) {
+  } else if (
+    options[1].checked == true &&
+    options[1].value === trivia[0].Solution
+  ) {
+    updateScore();
+  } else if (
+    options[2].checked == true &&
+    options[2].value === trivia[0].Solution
+  ) {
     console.log("That's correct!");
-  } else if (options[2].checked && options[2].value === trivia[0].Solution) {
-    console.log("That's correct!");
-  } else if (options[2].checked && options[2].value !== trivia[0].Solution) {
-    console.log("That's wrong!");
+  } else if (
+    options[2].checked == true &&
+    options[2].value !== trivia[0].Solution
+  ) {
+    updateScore();
   } else {
     console.log("yay");
   }
