@@ -1,9 +1,6 @@
 let buttonPlay = document.querySelector(".play");
 let q1 = document.querySelector(".question1");
-let options = document.querySelectorAll("label");
-let optionBQ1 = document.querySelector("#optionB");
-let optionCQ1 = document.querySelector("#optionC");
-let optionSubmit = document.querySelectorAll(".option");
+let options = document.querySelectorAll("[type = 'radio']");
 let form = document.querySelector("form");
 let trivia = [
   {
@@ -91,19 +88,28 @@ function playGame(e) {
   form.style.opacity = "1.0";
   q1.style.opacity = "1.0";
   q1.textContent = trivia[0].question;
-  options[0].innerHTML = trivia[0].A;
-  options[1].innerHTML = trivia[0].B;
-  options[2].innerHTML = trivia[0].C;
+  options[0].value = trivia[0].A;
+  options[1].value = trivia[0].B;
+  options[2].value = trivia[0].C;
 }
 
 function validateAnswer(e) {
+  console.log(options[0].value, options[1].value, options[2].value);
   e.preventDefault();
-  if (options[0].checked === trivia[0].solution) {
-    console.log("That's correct");
-  } else if (options[1].checked === trivia[0].solution) {
-    console.log("That's correct");
-  } else if (options[2].checked === trivia[0].solution) {
-    console.log("That's correct");
+  if (options[0].checked && options[0].value !== trivia[0].Solution) {
+    console.log("That's wrong!");
+  } else if (options[0].checked && options[0].value === trivia[0].Solution) {
+    cosole.log("That's correct!");
+  } else if (options[1].checked && options[1].value !== trivia[0].Solution) {
+    console.log("That's wrong!");
+  } else if (options[1].checked && options[1].value === trivia[0].Solution) {
+    console.log("That's correct!");
+  } else if (options[2].checked && options[2].value === trivia[0].Solution) {
+    console.log("That's correct!");
+  } else if (options[2].checked && options[2].value !== trivia[0].Solution) {
+    console.log("That's wrong!");
+  } else {
+    console.log("yay");
   }
 }
 
