@@ -96,14 +96,16 @@ function playGame(e) {
   options[2].innerHTML = trivia[0].C;
 }
 
-// function validateAnswer(e) {
-//   e.preventDefault();
-//   if (optionSubmit[0].innerText === trivia[0].solution) {
-//     console.log("That's correct");
-//   } else {
-//     console.log("Wrong!");
-//   }
-// }
+function validateAnswer(e) {
+  e.preventDefault();
+  if (options[0].checked === trivia[0].solution) {
+    console.log("That's correct");
+  } else if (options[1].checked === trivia[0].solution) {
+    console.log("That's correct");
+  } else if (options[2].checked === trivia[0].solution) {
+    console.log("That's correct");
+  }
+}
 
-// form.addEventListener("submit", validateAnswer);
+form.addEventListener("submit", validateAnswer);
 buttonPlay.addEventListener("click", playGame);
