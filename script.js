@@ -4,6 +4,8 @@ let options = document.querySelectorAll("[type = 'radio']");
 let optionName = document.querySelectorAll("label");
 let form = document.querySelector("form");
 let score = document.querySelector(".score");
+let correctMessage = document.querySelector(".correct");
+let wrongMessage = document.querySelector(".wrong");
 let trivia = [
   {
     question: "What was Hrithik Roshan's first film?",
@@ -103,31 +105,34 @@ function playGame(e) {
 function validateAnswer(e) {
   e.preventDefault();
   if (options[0].checked == true && options[0].value !== trivia[0].Solution) {
-    console.log("That's wrong!");
+    wrongMessage.style.opacity = "1.0";
   } else if (
     options[0].checked == true &&
     options[0].value === trivia[0].Solution
   ) {
+    correctMessage.style.opacity = "1.0";
     updateScore();
   } else if (
     options[1].checked == true &&
     options[1].value !== trivia[0].Solution
   ) {
-    console.log("That's wrong!");
+    wrongMessage.style.opacity = "1.0";
   } else if (
     options[1].checked == true &&
     options[1].value === trivia[0].Solution
   ) {
+    correctMessage.style.opacity = "1.0";
     updateScore();
-  } else if (
-    options[2].checked == true &&
-    options[2].value === trivia[0].Solution
-  ) {
-    console.log("That's correct!");
   } else if (
     options[2].checked == true &&
     options[2].value !== trivia[0].Solution
   ) {
+    wrongMessage.style.opacity = "1.0";
+  } else if (
+    options[2].checked == true &&
+    options[2].value === trivia[0].Solution
+  ) {
+    correctMessage.style.opacity = "1.0";
     updateScore();
   } else {
     console.log("yay");

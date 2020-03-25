@@ -49,6 +49,18 @@ form {
   grid-column: 8 / span 2; */
 }
 
+.correct {
+  border: 2px solid orange;
+  opacity: 0;
+  background-color: orange;
+}
+
+.wrong {
+  border: 2px solid green;
+  opacity: 0;
+  background-color: lightblue;
+}
+
 .score {
   border: 2px solid purple;
   grid-row: 8 / span 1;
