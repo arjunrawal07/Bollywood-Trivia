@@ -16,27 +16,37 @@
   grid-column: 2 / span 8;
   text-align: center;
 }
-.option {
-  opacity: 0;
+
+form {
+  grid-row: 4 / span 2;
+  grid-column: 2 / span 8;
+  display: grid;
+  grid-template-rows: repeat(10, auto);
+  grid-template-columns: repeat(10, auto);
+  /* opacity: 0; */
   margin: 10px 10px;
 }
 
+/* #option {
+  */
+/* } */
+
 #optionA {
   border: 2px solid green;
-  grid-row: 4 / span 2;
-  grid-column: 2 / span 2;
+  /* grid-row: 4 / span 2;
+  grid-column: 2 / span 2; */
 }
 
 #optionB {
   border: 2px solid red;
-  grid-row: 4 / span 2;
-  grid-column: 5 / span 2;
+  /* grid-row: 4 / span 2;
+  grid-column: 5 / span 2; */
 }
 
 #optionC {
   border: 2px solid orange;
-  grid-row: 4 / span 2;
-  grid-column: 8 / span 2;
+  /* grid-row: 4 / span 2;
+  grid-column: 8 / span 2; */
 }
 
 .score {
