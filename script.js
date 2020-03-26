@@ -6,6 +6,7 @@ let form = document.querySelector("form");
 let score = document.querySelector(".score");
 let correctMessage = document.querySelector(".correct");
 let wrongMessage = document.querySelector(".wrong");
+let nextButton = document.querySelector(".next");
 let trivia = [
   {
     question: "What was Hrithik Roshan's first film?",
@@ -85,9 +86,11 @@ let trivia = [
     Solution: "Deepika Padukone"
   }
 ];
+let questionIndex = 0;
 function updateScore() {
   score.textContent += 1;
 }
+// for (let i = 0; i < trivia.length; i++) {
 function playGame(e) {
   e.preventDefault();
   buttonPlay.style.opacity = "0.0";
@@ -139,5 +142,11 @@ function validateAnswer(e) {
   }
 }
 
+function next(e) {
+  questionIndex = questionIndex + 1;
+  q1.textContent = trivia[questionIndex].question;
+}
+
 form.addEventListener("submit", validateAnswer);
 buttonPlay.addEventListener("click", playGame);
+nextButton.addEventListener("click", next);
