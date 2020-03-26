@@ -5,6 +5,7 @@ let options = document.querySelectorAll("[type = 'radio']");
 let optionName = document.querySelectorAll("label");
 let form = document.querySelector("form");
 let score = document.querySelector(".score");
+let scoreValue = 0;
 let correctMessage = document.querySelector(".correct");
 let wrongMessage = document.querySelector(".wrong");
 let correctButton = document.querySelector(".next");
@@ -95,7 +96,8 @@ let optionBIndex = 0;
 let optionCIndex = 0;
 
 function updateScore() {
-  score.textContent += 1;
+  scoreValue = scoreValue + 1;
+  score.textContent = `Score = ${scoreValue} / 10`;
 }
 // for (let i = 0; i < trivia.length; i++) {
 function playGame(e) {
