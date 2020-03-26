@@ -87,6 +87,10 @@ let trivia = [
   }
 ];
 let questionIndex = 0;
+let optionAIndex = 0;
+let optionBIndex = 0;
+let optionCIndex = 0;
+
 function updateScore() {
   score.textContent += 1;
 }
@@ -145,6 +149,15 @@ function validateAnswer(e) {
 function next(e) {
   questionIndex = questionIndex + 1;
   q1.textContent = trivia[questionIndex].question;
+  optionAIndex = optionAIndex + 1;
+  optionBIndex = optionBIndex + 1;
+  optionCIndex = optionCIndex + 1;
+  options[0].value = trivia[optionAIndex].A;
+  optionName[0].textContent = trivia[optionAIndex].A;
+  options[1].value = trivia[optionBIndex].B;
+  optionName[1].textContent = trivia[optionBIndex].B;
+  options[2].value = trivia[optionCIndex].C;
+  optionName[2].textContent = trivia[optionCIndex].C;
 }
 
 form.addEventListener("submit", validateAnswer);
