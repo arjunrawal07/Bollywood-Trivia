@@ -6,7 +6,9 @@ let form = document.querySelector("form");
 let score = document.querySelector(".score");
 let correctMessage = document.querySelector(".correct");
 let wrongMessage = document.querySelector(".wrong");
-let nextButton = document.querySelector(".next");
+let correctButton = document.querySelector(".next");
+let wrongButton = document.querySelector("#wrong");
+
 let trivia = [
   {
     question: "What was Hrithik Roshan's first film?",
@@ -158,8 +160,11 @@ function next(e) {
   optionName[1].textContent = trivia[optionBIndex].B;
   options[2].value = trivia[optionCIndex].C;
   optionName[2].textContent = trivia[optionCIndex].C;
+  correctMessage.style.opacity = "0.0";
+  wrongMessage.style.opacity = "0.0";
 }
 
-form.addEventListener("submit", validateAnswer);
 buttonPlay.addEventListener("click", playGame);
-nextButton.addEventListener("click", next);
+form.addEventListener("submit", validateAnswer);
+correctButton.addEventListener("click", next);
+wrongButton.addEventListener("click", next);
