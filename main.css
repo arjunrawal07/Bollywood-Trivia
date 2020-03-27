@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 body {
   background-image: url("https://i.imgur.com/OS3VgZr.jpg");
@@ -97,12 +98,18 @@ label {
   border: 2px solid orange;
   opacity: 0;
   background-color: orange;
+  text-align: center;
+  font-size: 25px;
 }
 
 .wrong {
   border: 2px solid green;
   opacity: 0;
   background-color: lightblue;
+  text-align: center;
+  font-size: 25px;
+  /* grid-row: 1 / span 10;
+  grid-column: 1 / span 10; */
 }
 
 .score {
@@ -111,4 +118,9 @@ label {
   grid-column: 5 / span 2;
   text-align: center;
   margin-top: 20px;
+}
+
+.next {
+  font-size: 25px;
+  border: 2px solid lightslategray;
 }

@@ -10,29 +10,33 @@ let correctMessage = document.querySelector(".correct");
 let wrongMessage = document.querySelector(".wrong");
 let correctButton = document.querySelector(".next");
 let wrongButton = document.querySelector("#wrong");
-
+let poster = document.querySelector(".image");
 let trivia = [
   {
-    question: "What was Hrithik Roshan's first film?",
+    question: "Which of the following is not a Bollywood film?",
     A: "Khabi Khushi Khabi Gham",
-    B: "Dhoom 2",
-    C: "Kaho Naa...Pyaar Hai",
-    Solution: "Kaho Naa...Pyaar Hai"
+    B: "Slumdog Millionaire",
+    C: "Margarita with a Straw",
+    Solution: "Slumdog Millionaire",
+    image: "https://i.imgur.com/3stA7Ld.jpg"
   },
   {
     question:
-      "Which actor debuted in the film Sawaryia?  This actor also starred in Bachna Ae Haseeno Ajab Prem Ki Ghazab Kahani",
-    A: "Salman Khan",
-    B: "Ranveer Singh",
-    C: "Ranbir Kapoor",
-    Solution: "Ranbir Kapoor"
+      "This awards event recognizes artistic and technical excellence in the Hindi-language film industry of India.",
+    A: "Academy Awards",
+    B: "Filmfare Awards",
+    C: "National Film Awards",
+    Solution: "Filmfare Awards",
+    image: "https://i.imgur.com/GNaaeNT.png?1"
   },
   {
-    question: "What was the name of the alien in Koi Mil Gaya?",
-    A: "Jadoo",
-    B: "Baloo",
-    C: "Ladoo",
-    Solution: "Jadoo"
+    question:
+      "What Bollywood movie features an alien akin to Hollywood's E.T.?",
+    A: "Koi Mil Gaya",
+    B: "Bhoot",
+    C: "Jadoo",
+    Solution: "Koi Mil Gaya",
+    image: "https://i.imgur.com/cU9zAgz.jpg"
   },
   {
     question:
@@ -40,23 +44,26 @@ let trivia = [
     A: "Shubh Mangal Zyada Saavdhan",
     B: "Ek Ladki Ko Dekha Toh Aisa Laga",
     C: "Hum Saath Saath Hain",
-    Solution: "Ek Ladki Ko Dekha Toh Aisa Laga"
+    Solution: "Ek Ladki Ko Dekha Toh Aisa Laga",
+    image: "https://i.imgur.com/ECKcKHz.jpg?1"
   },
   {
     question:
-      "Which movie centers around a rural village that rebels against the British colonizers who subjected the village to an unprecendented land tax?",
+      "Which movie centers around a rural village that rebels against the British occupation who subjected the village to an unprecendented land tax?",
     A: "Lagaan",
     B: "Rang De Basaanti",
     C: "Chakde! India",
-    Solution: "Lagaan"
+    Solution: "Lagaan",
+    image: "https://i.imgur.com/46dMBB4.jpg?1"
   },
   {
     question:
-      "This movie tells the story of a young woman, played by Rani Mukherji, who moves to Mumbai and turns to sex work in order to send mondy back to her home in Banaras and pay for her ailing father's medicines.",
+      "This movie tells the story of a young woman, played by Rani Mukherji, who moves to Mumbai and becomes a sex worker to send money back to her home in Banaras and pay for her ailing father's medicines.",
     A: "Mujhse Shaadi Karogi",
     B: "Ta Ra Rum Pum",
     C: "Laaga Chunari Mein Daag",
-    Solution: "Laaga Chunari Mein Daag"
+    Solution: "Laaga Chunari Mein Daag",
+    image: "https://i.imgur.com/KW8qBQI.jpg?1"
   },
   {
     question:
@@ -64,14 +71,17 @@ let trivia = [
     A: "Interpreter of Maladies",
     B: "The Namesake",
     C: "Blue Boy",
-    Solution: "The Namesake"
+    Solution: "The Namesake",
+    image: "https://i.imgur.com/jmKS5R6.jpg"
   },
   {
-    question: "What was the name of Basanti's horse in Sholay?",
-    A: "Ram",
-    B: "Leela",
-    C: "Dhano",
-    Solution: "Dhano"
+    question:
+      "In 2005, this movie was named the Best Film in 50 Years at the 50th Filmfare Awards. This movie is also considered a classic, and by some accounts, the highest-grossing Bollywood movie of all time.",
+    A: "Dilwale",
+    B: "Sholay",
+    C: "Kal Ho Naa Ho",
+    Solution: "Sholay",
+    image: "https://i.imgur.com/y97YjOA.jpg"
   },
   {
     question:
@@ -79,7 +89,8 @@ let trivia = [
     A: "Aishwarya Rai",
     B: "Tabu",
     C: "Hema Malini",
-    Solution: "Hema Malini"
+    Solution: "Hema Malini",
+    image: "https://i.imgur.com/LDhN6vd.jpg?1"
   },
   {
     question:
@@ -87,7 +98,8 @@ let trivia = [
     A: "Priyanka Chopra",
     B: "Deepika Padukone",
     C: "Kareena Kapoor",
-    Solution: "Deepika Padukone"
+    Solution: "Deepika Padukone",
+    image: "https://i.imgur.com/ygYCjcx.jpg?1"
   }
 ];
 let questionIndex = 0;
@@ -99,7 +111,6 @@ function updateScore() {
   scoreValue = scoreValue + 1;
   score.textContent = `Score = ${scoreValue} / 10`;
 }
-// for (let i = 0; i < trivia.length; i++) {
 function playGame(e) {
   e.preventDefault();
   buttonPlay.style.opacity = "0.0";
@@ -138,6 +149,7 @@ function validateAnswer(e) {
     options[1].value === trivia[questionIndex].Solution
   ) {
     correctMessage.style.opacity = "1.0";
+    correctMessage.setAttribute("src", trivia[questionIndex].image);
     updateScore();
   } else if (
     options[2].checked == true &&
@@ -149,6 +161,7 @@ function validateAnswer(e) {
     options[2].value === trivia[questionIndex].Solution
   ) {
     correctMessage.style.opacity = "1.0";
+    correctMessage.setAttribute("src", trivia[questionIndex].image);
     updateScore();
   } else {
     console.log("yay");
@@ -169,6 +182,7 @@ function next(e) {
   optionName[2].textContent = trivia[optionCIndex].C;
   correctMessage.style.opacity = "0.0";
   wrongMessage.style.opacity = "0.0";
+  poster.setAttribute("src", trivia[questionIndex].image);
 }
 
 buttonPlay.addEventListener("click", playGame);
