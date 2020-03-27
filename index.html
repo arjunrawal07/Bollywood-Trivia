@@ -9,12 +9,17 @@
   <body>
     <h1>Bollywood Trivia!</h1>
     <h2>
-      Play Trivia to learn more about some of Bollywood's most famous
+      Test your knowledge on Bollywood's most famous
       blockbusters and actors!
     </h3>
 
     <button class="play">Let's Play!</button>
-
+    <div class="correct">That's correct! Great job!
+      <button class="next">Next!</button>
+    </div>
+    <div class="wrong">Incorrect! Watch more Bollywood movies.
+      <button class="next" id="wrong">Next!</button>
+    </div>
     <div class="mainbox">
       <div class="question1"></div>
       <form>
@@ -27,20 +32,12 @@
         <input type="radio" id="optionC" name="test" value="" />
         <label for="optionC">OptionC</label>
 
-        <input type="submit" value="Final Answer!" />
+        <input type="submit" class="finalAnswer" value="Final Answer!" />
       </form>
-      <div class="score">score</div>
-    </div>
-    <div class="correct">
-      That's correct! Great job!
-      <!-- <img src="" class="image"/> -->
-      <button class="next">Next!</button>
-    </div>
-    <div class="wrong">
-      Incorrect! Watch more Bollywood movies.
-      <button class="next" id="wrong">Next!</button>
+      <div class="score">Score:</div>
     </div>
     <div class="poster"><img src="" class="image"></div>
+    <button class="reset">Reset</button>
     <script src="./script.js"></script>
   </body>
 </html>

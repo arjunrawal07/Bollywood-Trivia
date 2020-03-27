@@ -11,6 +11,11 @@ let wrongMessage = document.querySelector(".wrong");
 let correctButton = document.querySelector(".next");
 let wrongButton = document.querySelector("#wrong");
 let poster = document.querySelector(".image");
+let questionIndex = 0;
+let optionAIndex = 0;
+let optionBIndex = 0;
+let optionCIndex = 0;
+let resetButton = document.querySelector(".reset");
 let trivia = [
   {
     question: "Which of the following is not a Bollywood film?",
@@ -18,7 +23,7 @@ let trivia = [
     B: "Slumdog Millionaire",
     C: "Margarita with a Straw",
     Solution: "Slumdog Millionaire",
-    image: "https://i.imgur.com/3stA7Ld.jpg"
+    image: "https://i.imgur.com/ygYCjcx.jpg?1"
   },
   {
     question:
@@ -72,7 +77,7 @@ let trivia = [
     B: "The Namesake",
     C: "Blue Boy",
     Solution: "The Namesake",
-    image: "https://i.imgur.com/jmKS5R6.jpg"
+    image: "https://i.imgur.com/D7bXr5o.jpg?1"
   },
   {
     question:
@@ -81,7 +86,7 @@ let trivia = [
     B: "Sholay",
     C: "Kal Ho Naa Ho",
     Solution: "Sholay",
-    image: "https://i.imgur.com/y97YjOA.jpg"
+    image: "https://i.imgur.com/jmKS5R6.jpg"
   },
   {
     question:
@@ -90,7 +95,7 @@ let trivia = [
     B: "Tabu",
     C: "Hema Malini",
     Solution: "Hema Malini",
-    image: "https://i.imgur.com/LDhN6vd.jpg?1"
+    image: "https://i.imgur.com/y97YjOA.jpg"
   },
   {
     question:
@@ -99,13 +104,9 @@ let trivia = [
     B: "Deepika Padukone",
     C: "Kareena Kapoor",
     Solution: "Deepika Padukone",
-    image: "https://i.imgur.com/ygYCjcx.jpg?1"
+    image: "https://i.imgur.com/LDhN6vd.jpg?1"
   }
 ];
-let questionIndex = 0;
-let optionAIndex = 0;
-let optionBIndex = 0;
-let optionCIndex = 0;
 
 function updateScore() {
   scoreValue = scoreValue + 1;
@@ -124,8 +125,8 @@ function playGame(e) {
   optionName[1].textContent = trivia[questionIndex].B;
   options[2].value = trivia[questionIndex].C;
   optionName[2].textContent = trivia[questionIndex].C;
+  poster.setAttribute("src", trivia[questionIndex].image);
 }
-
 function validateAnswer(e) {
   e.preventDefault();
   if (
@@ -167,7 +168,6 @@ function validateAnswer(e) {
     console.log("yay");
   }
 }
-
 function next(e) {
   questionIndex = questionIndex + 1;
   q1.textContent = trivia[questionIndex].question;
@@ -184,8 +184,12 @@ function next(e) {
   wrongMessage.style.opacity = "0.0";
   poster.setAttribute("src", trivia[questionIndex].image);
 }
-
+function reset(e) {
+  e.preventDefault();
+  location.reload(true);
+}
 buttonPlay.addEventListener("click", playGame);
 form.addEventListener("submit", validateAnswer);
 correctButton.addEventListener("click", next);
 wrongButton.addEventListener("click", next);
+resetButton.addEventListener("click", reset);
