@@ -46,4 +46,4 @@ if (
 
 ## Unsolved Problems & Future Goals:
 
-Ultimately, the game should render images as clickable answer choices the user can select. Radio buttons may not be the best tool to achieve this goal, so future iterations should explore other options. Additionally, questions should display in randomized order every time the rest button is clicked.
+Ultimately, the game should render images as clickable answer choices the user can select. Radio buttons may not be the best tool to achieve this goal, so future iterations should explore other options. Additionally, questions should display in randomized order every time the reset button is clicked.
