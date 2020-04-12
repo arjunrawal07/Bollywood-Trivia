@@ -41,6 +41,9 @@ h2 {
   margin: 30px 45%;
   padding: 0 5px;
 }
+.bodyBox {
+  margin-top: -50px;
+}
 .mainbox {
   position: relative;
   grid-row: 5 / span 1;
