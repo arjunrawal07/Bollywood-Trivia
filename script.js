@@ -77,7 +77,7 @@ let trivia = [
     B: "The Namesake",
     C: "Blue Boy",
     Solution: "The Namesake",
-    image: "https://i.imgur.com/D7bXr5o.jpg?1",
+    image: "https://i.imgur.com/D7bXr5o.jpg?2",
   },
   {
     question:
@@ -86,7 +86,7 @@ let trivia = [
     B: "Sholay",
     C: "Kal Ho Naa Ho",
     Solution: "Sholay",
-    image: "https://i.imgur.com/jmKS5R6.jpg",
+    image: "https://i.imgur.com/jmKS5R6.jpg?1",
   },
   {
     question:
@@ -139,7 +139,7 @@ function validateAnswer(e) {
     options[0].value === trivia[questionIndex].Solution
   ) {
     correctMessage.style.opacity = "1.0";
-    // updateScore();
+    // correctMessage.setAttribute("src", trivia[questionIndex].image);
   } else if (
     options[1].checked == true &&
     options[1].value !== trivia[questionIndex].Solution
@@ -150,8 +150,7 @@ function validateAnswer(e) {
     options[1].value === trivia[questionIndex].Solution
   ) {
     correctMessage.style.opacity = "1.0";
-    correctMessage.setAttribute("src", trivia[questionIndex].image);
-    // updateScore();
+    // correctMessage.setAttribute("src", trivia[questionIndex].image);
   } else if (
     options[2].checked == true &&
     options[2].value !== trivia[questionIndex].Solution
@@ -162,13 +161,13 @@ function validateAnswer(e) {
     options[2].value === trivia[questionIndex].Solution
   ) {
     correctMessage.style.opacity = "1.0";
-    correctMessage.setAttribute("src", trivia[questionIndex].image);
-    // updateScore();
+    // correctMessage.setAttribute("src", trivia[questionIndex].image);
   } else {
     console.log("yay");
   }
 }
-function nextCorrect() {
+function nextCorrect(e) {
+  e.preventDefault();
   questionIndex = questionIndex + 1;
   q1.textContent = trivia[questionIndex].question;
   optionAIndex = optionAIndex + 1;
@@ -186,6 +185,7 @@ function nextCorrect() {
   updateScore();
 }
 function nextWrong(e) {
+  e.preventDefault();
   questionIndex = questionIndex + 1;
   q1.textContent = trivia[questionIndex].question;
   optionAIndex = optionAIndex + 1;
