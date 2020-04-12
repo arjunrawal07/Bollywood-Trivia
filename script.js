@@ -16,6 +16,10 @@ let optionAIndex = 0;
 let optionBIndex = 0;
 let optionCIndex = 0;
 let resetButton = document.querySelector(".reset");
+let resetMsg = document.querySelector(".resetMsg");
+let header1 = document.querySelector("h1");
+let header2 = document.querySelector("h2");
+
 let trivia = [
   {
     question: "Which of the following is not a Bollywood film?",
@@ -23,7 +27,7 @@ let trivia = [
     B: "Slumdog Millionaire",
     C: "Margarita with a Straw",
     Solution: "Slumdog Millionaire",
-    image: "https://i.imgur.com/ygYCjcx.jpg?1",
+    image: "https://i.imgur.com/ygYCjcx.jpg?2",
   },
   {
     question:
@@ -32,7 +36,7 @@ let trivia = [
     B: "Filmfare Awards",
     C: "National Film Awards",
     Solution: "Filmfare Awards",
-    image: "https://i.imgur.com/GNaaeNT.png?1",
+    image: "https://i.imgur.com/GNaaeNT.png?2",
   },
   {
     question:
@@ -50,7 +54,7 @@ let trivia = [
     B: "Ek Ladki Ko Dekha Toh Aisa Laga",
     C: "Hum Saath Saath Hain",
     Solution: "Ek Ladki Ko Dekha Toh Aisa Laga",
-    image: "https://i.imgur.com/ECKcKHz.jpg?1",
+    image: "https://i.imgur.com/ECKcKHz.jpg?2",
   },
   {
     question:
@@ -59,7 +63,7 @@ let trivia = [
     B: "Rang De Basaanti",
     C: "Chakde! India",
     Solution: "Lagaan",
-    image: "https://i.imgur.com/46dMBB4.jpg?1",
+    image: "https://i.imgur.com/46dMBB4.jpg?2",
   },
   {
     question:
@@ -68,7 +72,7 @@ let trivia = [
     B: "Ta Ra Rum Pum",
     C: "Laaga Chunari Mein Daag",
     Solution: "Laaga Chunari Mein Daag",
-    image: "https://i.imgur.com/KW8qBQI.jpg?1",
+    image: "https://i.imgur.com/KW8qBQI.jpg?2",
   },
   {
     question:
@@ -104,7 +108,7 @@ let trivia = [
     B: "Deepika Padukone",
     C: "Kareena Kapoor",
     Solution: "Deepika Padukone",
-    image: "https://i.imgur.com/LDhN6vd.jpg?1",
+    image: "https://i.imgur.com/LDhN6vd.jpg?2",
   },
 ];
 
@@ -114,6 +118,7 @@ function updateScore() {
 }
 function playGame(e) {
   e.preventDefault();
+  header2.style.opacity = "0.0";
   buttonPlay.style.opacity = "0.0";
   mainBox.style.opacity = "1.0";
   form.style.opacity = "1.0";
@@ -139,7 +144,6 @@ function validateAnswer(e) {
     options[0].value === trivia[questionIndex].Solution
   ) {
     correctMessage.style.opacity = "1.0";
-    // correctMessage.setAttribute("src", trivia[questionIndex].image);
   } else if (
     options[1].checked == true &&
     options[1].value !== trivia[questionIndex].Solution
@@ -150,7 +154,6 @@ function validateAnswer(e) {
     options[1].value === trivia[questionIndex].Solution
   ) {
     correctMessage.style.opacity = "1.0";
-    // correctMessage.setAttribute("src", trivia[questionIndex].image);
   } else if (
     options[2].checked == true &&
     options[2].value !== trivia[questionIndex].Solution
@@ -161,46 +164,58 @@ function validateAnswer(e) {
     options[2].value === trivia[questionIndex].Solution
   ) {
     correctMessage.style.opacity = "1.0";
-    // correctMessage.setAttribute("src", trivia[questionIndex].image);
   } else {
     console.log("yay");
   }
 }
+
 function nextCorrect(e) {
   e.preventDefault();
   questionIndex = questionIndex + 1;
-  q1.textContent = trivia[questionIndex].question;
-  optionAIndex = optionAIndex + 1;
-  optionBIndex = optionBIndex + 1;
-  optionCIndex = optionCIndex + 1;
-  options[0].value = trivia[optionAIndex].A;
-  optionName[0].textContent = trivia[optionAIndex].A;
-  options[1].value = trivia[optionBIndex].B;
-  optionName[1].textContent = trivia[optionBIndex].B;
-  options[2].value = trivia[optionCIndex].C;
-  optionName[2].textContent = trivia[optionCIndex].C;
-  correctMessage.style.opacity = "0.0";
-  wrongMessage.style.opacity = "0.0";
-  poster.setAttribute("src", trivia[questionIndex].image);
-  updateScore();
+  if (questionIndex <= trivia.length - 1) {
+    q1.textContent = trivia[questionIndex].question;
+    optionAIndex = optionAIndex + 1;
+    optionBIndex = optionBIndex + 1;
+    optionCIndex = optionCIndex + 1;
+    options[0].value = trivia[optionAIndex].A;
+    optionName[0].textContent = trivia[optionAIndex].A;
+    options[1].value = trivia[optionBIndex].B;
+    optionName[1].textContent = trivia[optionBIndex].B;
+    options[2].value = trivia[optionCIndex].C;
+    optionName[2].textContent = trivia[optionCIndex].C;
+    correctMessage.style.opacity = "0.0";
+    wrongMessage.style.opacity = "0.0";
+    poster.setAttribute("src", trivia[questionIndex].image);
+    updateScore();
+  } else {
+    header1.textContent =
+      "Congrats on finishing the game! Click the green reset button to play again.";
+  }
 }
+
 function nextWrong(e) {
   e.preventDefault();
   questionIndex = questionIndex + 1;
-  q1.textContent = trivia[questionIndex].question;
-  optionAIndex = optionAIndex + 1;
-  optionBIndex = optionBIndex + 1;
-  optionCIndex = optionCIndex + 1;
-  options[0].value = trivia[optionAIndex].A;
-  optionName[0].textContent = trivia[optionAIndex].A;
-  options[1].value = trivia[optionBIndex].B;
-  optionName[1].textContent = trivia[optionBIndex].B;
-  options[2].value = trivia[optionCIndex].C;
-  optionName[2].textContent = trivia[optionCIndex].C;
-  correctMessage.style.opacity = "0.0";
-  wrongMessage.style.opacity = "0.0";
-  poster.setAttribute("src", trivia[questionIndex].image);
+  if (questionIndex <= trivia.length - 1) {
+    q1.textContent = trivia[questionIndex].question;
+    optionAIndex = optionAIndex + 1;
+    optionBIndex = optionBIndex + 1;
+    optionCIndex = optionCIndex + 1;
+    options[0].value = trivia[optionAIndex].A;
+    optionName[0].textContent = trivia[optionAIndex].A;
+    options[1].value = trivia[optionBIndex].B;
+    optionName[1].textContent = trivia[optionBIndex].B;
+    options[2].value = trivia[optionCIndex].C;
+    optionName[2].textContent = trivia[optionCIndex].C;
+    correctMessage.style.opacity = "0.0";
+    wrongMessage.style.opacity = "0.0";
+    poster.setAttribute("src", trivia[questionIndex].image);
+  } else {
+    header1.textContent =
+      "Congrats on finishing the game! Click the green reset button to play again.";
+  }
 }
+
 function reset(e) {
   e.preventDefault();
   location.reload(true);
