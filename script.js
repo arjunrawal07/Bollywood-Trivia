@@ -23,7 +23,7 @@ let trivia = [
     B: "Slumdog Millionaire",
     C: "Margarita with a Straw",
     Solution: "Slumdog Millionaire",
-    image: "https://i.imgur.com/ygYCjcx.jpg?1"
+    image: "https://i.imgur.com/ygYCjcx.jpg?1",
   },
   {
     question:
@@ -32,7 +32,7 @@ let trivia = [
     B: "Filmfare Awards",
     C: "National Film Awards",
     Solution: "Filmfare Awards",
-    image: "https://i.imgur.com/GNaaeNT.png?1"
+    image: "https://i.imgur.com/GNaaeNT.png?1",
   },
   {
     question:
@@ -41,16 +41,16 @@ let trivia = [
     B: "Bhoot",
     C: "Jadoo",
     Solution: "Koi Mil Gaya",
-    image: "https://i.imgur.com/cU9zAgz.jpg"
+    image: "https://i.imgur.com/cU9zAgz.jpg",
   },
   {
     question:
-      "According to the BBC, Bollywood's fist major LGBTQ film was ______?",
+      "According to the BBC, Bollywood's first major LGBTQ film was ______?",
     A: "Shubh Mangal Zyada Saavdhan",
     B: "Ek Ladki Ko Dekha Toh Aisa Laga",
     C: "Hum Saath Saath Hain",
     Solution: "Ek Ladki Ko Dekha Toh Aisa Laga",
-    image: "https://i.imgur.com/ECKcKHz.jpg?1"
+    image: "https://i.imgur.com/ECKcKHz.jpg?1",
   },
   {
     question:
@@ -59,7 +59,7 @@ let trivia = [
     B: "Rang De Basaanti",
     C: "Chakde! India",
     Solution: "Lagaan",
-    image: "https://i.imgur.com/46dMBB4.jpg?1"
+    image: "https://i.imgur.com/46dMBB4.jpg?1",
   },
   {
     question:
@@ -68,7 +68,7 @@ let trivia = [
     B: "Ta Ra Rum Pum",
     C: "Laaga Chunari Mein Daag",
     Solution: "Laaga Chunari Mein Daag",
-    image: "https://i.imgur.com/KW8qBQI.jpg?1"
+    image: "https://i.imgur.com/KW8qBQI.jpg?1",
   },
   {
     question:
@@ -77,7 +77,7 @@ let trivia = [
     B: "The Namesake",
     C: "Blue Boy",
     Solution: "The Namesake",
-    image: "https://i.imgur.com/D7bXr5o.jpg?1"
+    image: "https://i.imgur.com/D7bXr5o.jpg?1",
   },
   {
     question:
@@ -86,7 +86,7 @@ let trivia = [
     B: "Sholay",
     C: "Kal Ho Naa Ho",
     Solution: "Sholay",
-    image: "https://i.imgur.com/jmKS5R6.jpg"
+    image: "https://i.imgur.com/jmKS5R6.jpg",
   },
   {
     question:
@@ -95,7 +95,7 @@ let trivia = [
     B: "Tabu",
     C: "Hema Malini",
     Solution: "Hema Malini",
-    image: "https://i.imgur.com/y97YjOA.jpg"
+    image: "https://i.imgur.com/y97YjOA.jpg",
   },
   {
     question:
@@ -104,8 +104,8 @@ let trivia = [
     B: "Deepika Padukone",
     C: "Kareena Kapoor",
     Solution: "Deepika Padukone",
-    image: "https://i.imgur.com/LDhN6vd.jpg?1"
-  }
+    image: "https://i.imgur.com/LDhN6vd.jpg?1",
+  },
 ];
 
 function updateScore() {
@@ -139,7 +139,7 @@ function validateAnswer(e) {
     options[0].value === trivia[questionIndex].Solution
   ) {
     correctMessage.style.opacity = "1.0";
-    updateScore();
+    // updateScore();
   } else if (
     options[1].checked == true &&
     options[1].value !== trivia[questionIndex].Solution
@@ -151,7 +151,7 @@ function validateAnswer(e) {
   ) {
     correctMessage.style.opacity = "1.0";
     correctMessage.setAttribute("src", trivia[questionIndex].image);
-    updateScore();
+    // updateScore();
   } else if (
     options[2].checked == true &&
     options[2].value !== trivia[questionIndex].Solution
@@ -163,12 +163,29 @@ function validateAnswer(e) {
   ) {
     correctMessage.style.opacity = "1.0";
     correctMessage.setAttribute("src", trivia[questionIndex].image);
-    updateScore();
+    // updateScore();
   } else {
     console.log("yay");
   }
 }
-function next(e) {
+function nextCorrect() {
+  questionIndex = questionIndex + 1;
+  q1.textContent = trivia[questionIndex].question;
+  optionAIndex = optionAIndex + 1;
+  optionBIndex = optionBIndex + 1;
+  optionCIndex = optionCIndex + 1;
+  options[0].value = trivia[optionAIndex].A;
+  optionName[0].textContent = trivia[optionAIndex].A;
+  options[1].value = trivia[optionBIndex].B;
+  optionName[1].textContent = trivia[optionBIndex].B;
+  options[2].value = trivia[optionCIndex].C;
+  optionName[2].textContent = trivia[optionCIndex].C;
+  correctMessage.style.opacity = "0.0";
+  wrongMessage.style.opacity = "0.0";
+  poster.setAttribute("src", trivia[questionIndex].image);
+  updateScore();
+}
+function nextWrong(e) {
   questionIndex = questionIndex + 1;
   q1.textContent = trivia[questionIndex].question;
   optionAIndex = optionAIndex + 1;
@@ -190,6 +207,6 @@ function reset(e) {
 }
 buttonPlay.addEventListener("click", playGame);
 form.addEventListener("submit", validateAnswer);
-correctButton.addEventListener("click", next);
-wrongButton.addEventListener("click", next);
+correctButton.addEventListener("click", nextCorrect);
+wrongButton.addEventListener("click", nextWrong);
 resetButton.addEventListener("click", reset);
