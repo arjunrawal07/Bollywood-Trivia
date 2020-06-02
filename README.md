@@ -1,12 +1,23 @@
-# Project-4---Bollywood-Trivia-
+#Bollywood-Trivia
 
-## Basics!:
+## Description:
 
 Welcome to Bollywood Trivia! Test your knowledge of Bollywood's famous blockbusters and actors.
 
-This trivia game utilized a combination of HTML, CSS, JavaScript, and DOM manipulation to render in the browswer. The game uses radio buttons to represent the answer choices the user can select, as well as a "Final Answer" submit button that verifies if the user's choice is correct.
+Answer the questions to the best of your ability and try to get a perfeect 10/10 score.
 
-Once the game validates the user's choice, a message appears telling the user whether or not they answered correctly. This message also includes a "Next" button to advance to the following question.
+## Technologies Used:
+Front-End:
+  * HTML
+  * CSS
+  * Vanilla Javascript
+  * DOM Manipulation
+
+The game also uses radio buttons to represent the answer choices the user can select, as well as a "Final Answer" submit button that verifies if the user's choice is correct.
+
+## How the Game Works:
+
+Once the game validates the user's answer choice, a message appears telling the user whether or not they answered correctly. This message also includes a "Next" button to advance to the following question.
 
 After the "Next" button is clicked, a photo appears in the bottom left-hand corner that represents the correct answer to the preceding question.
 
@@ -22,7 +33,7 @@ The developer used radio buttons for the first time, so most of the challenges p
 
 Here is a code snippet of how the developer loaded information into a specific radio button to render as an answer choice:
 
-```
+```js
 q1.textContent = trivia[questionIndex].question;
   options[0].value = trivia[questionIndex].A;
   optionName[0].textContent = trivia[questionIndex].A;
@@ -30,7 +41,7 @@ q1.textContent = trivia[questionIndex].question;
 
 And, here is an example of how the game validates the user's selection:
 
-```
+```js
 if (
     options[0].checked == true &&
     options[0].value !== trivia[questionIndex].Solution
